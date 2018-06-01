@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,12 +30,12 @@ class Ingredient
     private $denomination;
 
     /**
-     * @var Ingredient
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dish", inversedBy="ingredients")
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Dish", inversedBy="ingredients")
      * @ORM\JoinColumn(nullable=true)
      */
 
-    private $dish;
+    private $dishes;
 
     /**
      * Get id
@@ -71,26 +72,46 @@ class Ingredient
     }
 
     /**
-     * Set dish
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->dishes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add dish
      *
      * @param \AppBundle\Entity\Dish $dish
      *
      * @return Ingredient
      */
-    public function setDish(\AppBundle\Entity\Dish $dish = null)
+    public function addDish(\AppBundle\Entity\Dish $dish)
     {
-        $this->dish = $dish;
+        $dish->addIngredient($this);
+        $this->dishes[] = $dish;
 
         return $this;
     }
 
     /**
-     * Get dish
+     * Remove dish
      *
-     * @return \AppBundle\Entity\Dish
+     * @param \AppBundle\Entity\Dish $dish
      */
-    public function getDish()
+    public function removeDish(\AppBundle\Entity\Dish $dish)
     {
-        return $this->dish;
+        $dish->removeIngredient($this);
+        $this->dishes->removeElement($dish);
+    }
+
+    /**
+     * Get dishes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDishes()
+    {
+        return $this->dishes;
     }
 }

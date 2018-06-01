@@ -44,8 +44,8 @@ class Dish
     private $price;
 
     /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ingredient", mappedBy="dish")
+     * @var Ingredient
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ingredient", mappedBy="dishes")
      */
     private $ingredients;
 
@@ -147,6 +147,7 @@ class Dish
      */
     public function addIngredient(\AppBundle\Entity\Ingredient $ingredient)
     {
+        $ingredient->addDish($this);
         $this->ingredients[] = $ingredient;
 
         return $this;
@@ -159,6 +160,7 @@ class Dish
      */
     public function removeIngredient(\AppBundle\Entity\Ingredient $ingredient)
     {
+        $ingredient->removeDish($this);
         $this->ingredients->removeElement($ingredient);
     }
 
@@ -170,5 +172,10 @@ class Dish
     public function getIngredients()
     {
         return $this->ingredients;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
     }
 }
