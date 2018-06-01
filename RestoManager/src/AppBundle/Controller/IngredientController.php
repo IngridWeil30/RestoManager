@@ -27,7 +27,7 @@ class IngredientController extends Controller
 
         $ingredients = $em->getRepository('AppBundle:Ingredient')->findAll();
 
-        return $this->render('ingredient/index.html.twig', array(
+        return $this->render('ingredient/index.html.twig.twig', array(
             'ingredients' => $ingredients,
         ));
     }

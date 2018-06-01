@@ -26,7 +26,7 @@ class DishController extends Controller
 
         $dishes = $em->getRepository('AppBundle:Dish')->findAll();
 
-        return $this->render('dish/index.html.twig', array(
+        return $this->render('dish/index.html.twig.twig', array(
             'dishes' => $dishes,
         ));
     }
