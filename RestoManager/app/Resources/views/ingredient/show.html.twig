@@ -13,8 +13,19 @@
                 <th>Denomination</th>
                 <td>{{ ingredient.denomination }}</td>
             </tr>
-        </tbody>
-    </table>
+            <tr>
+                <th>Dishes component ingredient</th>
+                    <td>
+                    <ul>
+                        {% for dishesComponent in dishes %}
+                        <li><a href="/dish/{{ dishesComponent.id }}">{{ dishesComponent.title }}</li>
+                        {% endfor %}
+                    </ul>
+                    </td>
+            </tr>
+                    </tbody>
+                    </table>
+
 
     <ul>
         <li>

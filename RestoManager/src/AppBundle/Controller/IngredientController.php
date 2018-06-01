@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Ingredient;
+use AppBundle\Entity\Dish;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -67,8 +68,17 @@ class IngredientController extends Controller
     {
         $deleteForm = $this->createDeleteForm($ingredient);
 
+        //$dishes = new Dish();
+        $em = $this->getDoctrine()->getManager();
+
+        $dishes = $em->getRepository('AppBundle:Dish')->findAll();
+
+
+
+
         return $this->render('ingredient/show.html.twig', array(
             'ingredient' => $ingredient,
+            'dishes' => $dishes,
             'delete_form' => $deleteForm->createView(),
         ));
     }
