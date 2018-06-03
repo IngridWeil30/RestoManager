@@ -27,7 +27,7 @@ class IngredientController extends Controller
 
         $ingredients = $em->getRepository('AppBundle:Ingredient')->findAll();
 
-        return $this->render('ingredient/index.html.twig.twig', array(
+        return $this->render('ingredient/index.html.twig', array(
             'ingredients' => $ingredients,
         ));
     }
@@ -68,7 +68,6 @@ class IngredientController extends Controller
     {
         $deleteForm = $this->createDeleteForm($ingredient);
 
-        //$dishes = new Dish();
         $em = $this->getDoctrine()->getManager();
 
         $dishes = $em->getRepository('AppBundle:Dish')->findAll();

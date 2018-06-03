@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Denomination</th>
+                <th>Price</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.id }}</a></td>
                 <td>{{ ingredient.denomination }}</td>
+                <td>${{ ingredient.price }}</td>
                 <td>
                     <ul>
                         <li>

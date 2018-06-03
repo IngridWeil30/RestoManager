@@ -38,6 +38,13 @@ class Ingredient
     private $dishes;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
+
+    /**
      * Get id
      *
      * @return int
@@ -113,5 +120,29 @@ class Ingredient
     public function getDishes()
     {
         return $this->dishes;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     *
+     * @return Ingredient
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
     }
 }

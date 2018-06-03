@@ -38,6 +38,13 @@ class Ingredient
     private $dishes;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
+
+    /**
      * Get id
      *
      * @return int
