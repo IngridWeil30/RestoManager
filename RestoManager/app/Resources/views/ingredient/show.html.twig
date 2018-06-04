@@ -17,8 +17,8 @@
                 <th>Dishes component ingredient</th>
                     <td>
                     <ul>
-                        {% for dishesComponent in dishes %}
-                        <li><a href="/dish/{{ dishesComponent.id }}">{{ dishesComponent.title }}</li>
+                        {% for dish in ingredient.dishes %}
+                        <li><a href="{{ path('dish_show') }}">{{ dish.id }} / {{ dish.title }}</li>
                         {% endfor %}
                     </ul>
                     </td>

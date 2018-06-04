@@ -1,0 +1,13 @@
+p, li.nav-link-logged {
+    color: #ec1d25;
+}
+
+#username
+{
+    border: 1px solid #ec1d25 !important;
+}
+
+#password
+{
+    border: 1px solid #ec1d25 !important;
+}

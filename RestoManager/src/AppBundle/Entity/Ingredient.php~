@@ -121,4 +121,28 @@ class Ingredient
     {
         return $this->dishes;
     }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     *
+     * @return Ingredient
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
 }
