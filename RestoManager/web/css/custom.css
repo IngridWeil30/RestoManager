@@ -1,4 +1,5 @@
-p, li.nav-link-logged {
+p, li.nav-link-logged
+{
     color: #ec1d25;
 }
 
@@ -10,4 +11,33 @@ p, li.nav-link-logged {
 #password
 {
     border: 1px solid #ec1d25 !important;
+}
+
+label
+{
+    color: white;
+}
+
+#opacity-box{
+    background: #CCC;
+    opacity: 0.6;
+}
+
+#_submit
+{
+    background: white;
+    border-radius: 10px;
+    width: 135px;
+    height: 40px;
+    font-family: Montserrat, SansSerif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.1;
+    color: #ec1d25;
+    text-transform: uppercase;
+}
+
+h1, h2, p
+{
+    color: white;
 }

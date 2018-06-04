@@ -33,6 +33,9 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+                always_use_default_target_path: true
+                default_target_path:            /justlogged
+                target_path_parameter:          _target_path
             logout:       true
             anonymous:    true
 
@@ -48,6 +51,8 @@ security:
 
 #            - { path: ^/category, roles: ROLE_USER }
 #            - { path: ^/product/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+            - { path: ^/admin, roles: ROLE_MANAGER }
             - { path: ^/ingredient, roles: ROLE_MANAGER }
             - { path: ^/dish, roles: ROLE_MANAGER }
 
