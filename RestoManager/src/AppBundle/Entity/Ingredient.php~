@@ -226,4 +226,8 @@ class Ingredient
     {
         return $this->recipes;
     }
+    public function __toString()
+    {
+        return $this->getDenomination();
+    }
 }

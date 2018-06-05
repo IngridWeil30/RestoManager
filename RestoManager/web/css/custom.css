@@ -37,7 +37,7 @@ label
     text-transform: uppercase;
 }
 
-h1, h2, p, li, .add-new-recipe
+h1, h2, h3, p, li, .add-new-recipe
 {
     margin: 10px;
     color: white;

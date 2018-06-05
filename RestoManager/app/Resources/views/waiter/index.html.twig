@@ -2,11 +2,11 @@
 
 {% block body %}
 
-    <h1>WAITER ACTIONS</h1>
+    <h2>WAITER ACTIONS</h2>
 
     <p>{{ 'now' | localizeddate('full', 'none') }}</p>
 
-    <h2>Taking an order</h2>
+    <h3>Taking an order</h3>
     {% for dish in dishes %}
         <ul>
             <li>{{ dish.title }}

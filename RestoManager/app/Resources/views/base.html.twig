@@ -59,17 +59,18 @@
                 <div class="wrap_menu p-l-45 p-l-0-xl">
                     <nav class="menu">
                         <ul class="main_menu">
-                            {#<li>#}
-                            {#<a href="index.html.twig">Home</a>#}
-                            {#</li>#}
+                            {% if is_granted("ROLE_MANAGER") %}
+                            <li>
+                            <a href="/dish">Dishes</a>
+                            </li>
 
-                            {#<li>#}
-                            {#<a href="/dish">Dishes</a>#}
-                            {#</li>#}
-
-                            {#<li>#}
-                            {#<a href="/ingredient">Ingredient</a>#}
-                            {#</li>#}
+                            <li>
+                            <a href="/ingredient">Ingredient</a>
+                            </li>
+                            <li>
+                                <a href="/user">Employees</a>
+                            </li>
+                            {% endif %}
                             <li>
                                 <p>Technical support +33 645122986
                             </li>
