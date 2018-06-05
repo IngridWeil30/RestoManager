@@ -30,19 +30,18 @@ class Ingredient
     private $denomination;
 
     /**
-     * @var ArrayCollection
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Dish", inversedBy="ingredients")
-     * @ORM\JoinColumn(nullable=true)
-     */
-
-    private $dishes;
-
-    /**
      * @var float
      *
      * @ORM\Column(name="price", type="float")
      */
     private $price;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Recipe", mappedBy="ingredient")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $recipes;
 
     /**
      * Get id
@@ -144,5 +143,87 @@ class Ingredient
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param float $quantity
+     *
+     * @return Ingredient
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Get quantity
+     *
+     * @return float
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set recipe
+     *
+     * @param \AppBundle\Entity\Recipe $recipe
+     *
+     * @return Ingredient
+     */
+    public function setRecipe(\AppBundle\Entity\Recipe $recipe)
+    {
+        $this->recipe = $recipe;
+
+        return $this;
+    }
+
+    /**
+     * Get recipe
+     *
+     * @return \AppBundle\Entity\Recipe
+     */
+    public function getRecipe()
+    {
+        return $this->recipe;
+    }
+
+    /**
+     * Add recipe
+     *
+     * @param \AppBundle\Entity\Recipe $recipe
+     *
+     * @return Ingredient
+     */
+    public function addRecipe(\AppBundle\Entity\Recipe $recipe)
+    {
+        $this->recipes[] = $recipe;
+
+        return $this;
+    }
+
+    /**
+     * Remove recipe
+     *
+     * @param \AppBundle\Entity\Recipe $recipe
+     */
+    public function removeRecipe(\AppBundle\Entity\Recipe $recipe)
+    {
+        $this->recipes->removeElement($recipe);
+    }
+
+    /**
+     * Get recipes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRecipes()
+    {
+        return $this->recipes;
     }
 }

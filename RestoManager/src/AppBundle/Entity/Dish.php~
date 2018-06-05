@@ -44,138 +44,29 @@ class Dish
     private $price;
 
     /**
-     * @var Ingredient
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ingredient", mappedBy="dishes")
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Recipe", mappedBy="dish")
+     * @ORM\JoinColumn(nullable=true)
      */
-    private $ingredients;
+    private $recipes;
+
+
 
     /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Dish
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Dish
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set price
-     *
-     * @param float $price
-     *
-     * @return Dish
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->ingredients = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add ingredient
-     *
-     * @param \AppBundle\Entity\Ingredient $ingredient
-     *
-     * @return Dish
-     */
-    public function addIngredient(\AppBundle\Entity\Ingredient $ingredient)
-    {
-        $ingredient->addDish($this);
-        $this->ingredients[] = $ingredient;
-
-        return $this;
-    }
-
-    /**
-     * Remove ingredient
-     *
-     * @param \AppBundle\Entity\Ingredient $ingredient
-     */
-    public function removeIngredient(\AppBundle\Entity\Ingredient $ingredient)
-    {
-        $ingredient->removeDish($this);
-        $this->ingredients->removeElement($ingredient);
-    }
-
-    /**
-     * Get ingredients
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Ingredient
      */
     public function getIngredients()
     {
-        return $this->ingredients;
+        return null;
     }
-
-    public function __toString()
+    /**
+     * @var Ingredient
+     */
+    public function setIngredients($ingredient)
     {
-        return $this->getTitle();
+        die('yoyo');
+        $recipe = new Recipe();
+        $recipe->setIngredient($ingredient);
+        $this->addRecipe($recipe);
     }
 }

@@ -6,22 +6,21 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class IngredientType extends AbstractType
+class RecipeType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('denomination')->add('price');
-    }
-    /**
+        $builder->add('quantity')->add('ingredient');
+    }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Ingredient'
+            'data_class' => 'AppBundle\Entity\Recipe'
         ));
     }
 
@@ -30,7 +29,7 @@ class IngredientType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_ingredient';
+        return 'appbundle_recipe';
     }
 
 

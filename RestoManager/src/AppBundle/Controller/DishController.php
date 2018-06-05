@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Dish;
+use AppBundle\Entity\Recipe;
+use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -25,9 +27,11 @@ class DishController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $dishes = $em->getRepository('AppBundle:Dish')->findAll();
+        $ingredient = $em->getRepository('AppBundle:Recipe')->findAll();
 
         return $this->render('dish/index.html.twig', array(
             'dishes' => $dishes,
+            'ingredient' => $ingredient,
         ));
     }
 
@@ -40,6 +44,8 @@ class DishController extends Controller
     public function newAction(Request $request)
     {
         $dish = new Dish();
+        $recipe1=new Recipe();
+        $recipe1->setDish($dish);
         $form = $this->createForm('AppBundle\Form\DishType', $dish);
         $form->handleRequest($request);
 

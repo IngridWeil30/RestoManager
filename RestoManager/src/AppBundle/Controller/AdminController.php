@@ -27,11 +27,13 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-/*        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-        $users = $em->getRepository('AppBundle:User')->findAll();*/
+        $dishes = $em->getRepository('AppBundle:Dish')->findAll();
 
-        return $this->render('admin/index.html.twig');
+        return $this->render('admin/index.html.twig', array(
+            'dishes' => $dishes,
+        ));
     }
 
 }

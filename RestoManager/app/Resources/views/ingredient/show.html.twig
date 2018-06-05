@@ -5,26 +5,27 @@
 
     <table>
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ ingredient.id }}</td>
-            </tr>
-            <tr>
-                <th>Denomination</th>
-                <td>{{ ingredient.denomination }}</td>
-            </tr>
-            <tr>
-                <th>Dishes component ingredient</th>
-                    <td>
-                    <ul>
-                        {% for dish in ingredient.dishes %}
-                        <li><a href="{{ path('dish_show') }}">{{ dish.id }} / {{ dish.title }}</li>
+        <tr>
+            <th>Id</th>
+            <td>{{ ingredient.id }}</td>
+        </tr>
+        <tr>
+            <th>Denomination</th>
+            <td>{{ ingredient.denomination }}</td>
+        </tr>
+        <tr>
+            <th>Dishes component ingredient</th>
+            <td>
+                <ul>{% for recipe in ingredient.recipes %}
+                        {% for dish in recipe.dishes %}
+                            <li><a href="{{ path('dish_show') }}">{{ dish.id }} / {{ dish.title }}</li>
                         {% endfor %}
-                    </ul>
-                    </td>
-            </tr>
-                    </tbody>
-                    </table>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
 
     <ul>
@@ -36,7 +37,7 @@
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+            <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>
