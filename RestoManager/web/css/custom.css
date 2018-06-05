@@ -37,13 +37,13 @@ label
     text-transform: uppercase;
 }
 
-h1, h2, p, li
+h1, h2, p, li, .add-new-recipe
 {
     margin: 10px;
     color: white;
 }
 
-td, a, tr, th
+td, a, tr, th, legend
 {
     color: white;
 }

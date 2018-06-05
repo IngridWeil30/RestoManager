@@ -5,7 +5,13 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    <div class="new-recipe">
+        <p>ingredient(s) :</p>
+        <input class="recipes" type="text" name="recipe"/></br>
+    </div>
+    <button class="add-new-recipe">add</button>
+
+    <input type="submit" value="Create" />
     {{ form_end(form) }}
 
     <ul>
@@ -13,4 +19,22 @@
             <a href="{{ path('dish_index') }}">Back to the list</a>
         </li>
     </ul>
+
+
 {% endblock %}
+
+{% block javascripts %}
+
+<script>
+    $( document ).ready(function() {
+        var count = 1;
+        $('.add-new-recipe').click(function(e) {
+            e.preventDefault();
+
+            $('div.new-recipe').append("</br><input class='recipes' type='text' name='recipe" + count++ + "'/></br>");
+        })
+    });
+</script>
+    </br>
+
+{% endblock  %}
