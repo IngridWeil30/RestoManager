@@ -47,3 +47,8 @@ td, a, tr, th, legend
 {
     color: white;
 }
+
+.employee_month
+{
+    border: 5px solid #ec1d25 !important;
+}

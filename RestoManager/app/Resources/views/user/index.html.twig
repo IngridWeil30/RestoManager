@@ -14,7 +14,7 @@
         </thead>
         <tbody>
         {% for user in users %}
-            {% if user.id != app.user.id %}
+            {% if user.id != 3 %}' %}
             <tr>
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
                 <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a></td>
@@ -35,9 +35,9 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('user_new') }}">Create a new user</a>
-        </li>
-    </ul>
+    {#<ul>#}
+        {#<li>#}
+            {#<a href="{{ path('user_new') }}">Create a new user</a>#}
+        {#</li>#}
+    {#</ul>#}
 {% endblock %}

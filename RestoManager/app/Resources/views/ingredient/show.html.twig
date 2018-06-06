@@ -6,6 +6,9 @@
     <table>
         <tbody>
         <tr>
+            <td><img src="{{ ingredient.urlimage }}" width="200" height="200"></td>
+        </tr>
+        <tr>
             <th>Id</th>
             <td>{{ ingredient.id }}</td>
         </tr>
@@ -14,13 +17,15 @@
             <td>{{ ingredient.denomination }}</td>
         </tr>
         <tr>
-            <th>Dishes component ingredient</th>
+            <th>Recipes using this ingredient</th>
             <td>
                 <ul>{% for recipe in ingredient.recipes %}
-                        {% for dish in recipe.dishes %}
-                            <li><a href="{{ path('dish_show') }}">{{ dish.id }} / {{ dish.title }}</li>
-                        {% endfor %}
+                        recipe_id: {{ recipe.id }}
                     {% endfor %}
+                    {#{% for dish in recipe.dish %}#}
+                        {#<li><a href="{{ path('dish_show') }}">{{ dish.id }} / {{ dish.title }}</li>#}
+                        {#<p>hello1</p>#}
+                    {#{% endfor %}#}
                 </ul>
             </td>
         </tr>

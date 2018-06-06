@@ -43,6 +43,14 @@ class Ingredient
      */
     private $recipes;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="urlimage", type="text", nullable=true)
+     */
+    private $urlimage;
+
     /**
      * Get id
      *
@@ -229,5 +237,29 @@ class Ingredient
     public function __toString()
     {
         return $this->getDenomination();
+    }
+
+    /**
+     * Set urlimage
+     *
+     * @param string $urlimage
+     *
+     * @return Ingredient
+     */
+    public function setUrlimage($urlimage)
+    {
+        $this->urlimage = $urlimage;
+
+        return $this;
+    }
+
+    /**
+     * Get urlimage
+     *
+     * @return string
+     */
+    public function getUrlimage()
+    {
+        return $this->urlimage;
     }
 }

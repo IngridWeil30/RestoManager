@@ -53,6 +53,13 @@ class Dish
 
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="urlimage", type="text", nullable=true)
+     */
+    private $urlimage;
+
+    /**
      * @return Collection
      */
     public function getIngredients()
@@ -216,5 +223,29 @@ class Dish
     public function getRecipes()
     {
         return $this->recipes;
+    }
+
+    /**
+     * Set urlimage
+     *
+     * @param string $urlimage
+     *
+     * @return Dish
+     */
+    public function setUrlimage($urlimage)
+    {
+        $this->urlimage = $urlimage;
+
+        return $this;
+    }
+
+    /**
+     * Get urlimage
+     *
+     * @return string
+     */
+    public function getUrlimage()
+    {
+        return $this->urlimage;
     }
 }
