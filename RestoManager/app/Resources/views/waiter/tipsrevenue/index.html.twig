@@ -18,11 +18,11 @@
     <button id="_submit">Submit</button>
 
     <tr>
-        <th>Daily revenue</th>
-        {{ form_start(dailyRevenue_form) }}
-        {{ form_widget(dailyRevenue_form) }}
-        <input type="submit" value="Submit a daily revenue" />
-        {{ form_end(dailyRevenue_form) }}
+        <th>Tips revenue</th>
+        {{ form_start(tipsRevenue_form) }}
+        {{ form_widget(tipsRevenue_form) }}
+        <input type="submit" value="Submit a tips revenue" />
+        {{ form_end(tipsRevenue_form) }}
     </tr>
     {#<tr>#}
         {#<th>Starting price</th>#}
@@ -45,5 +45,5 @@
         {#<td>{{ product.userowner }}</td>#}
     {#</tr>#}
 
-    </br><p>Daily revenues : {{ inputRevenue }}</p>
+    </br><p>Tips revenues : {{ tipAmount }}</p>
 {% endblock %}

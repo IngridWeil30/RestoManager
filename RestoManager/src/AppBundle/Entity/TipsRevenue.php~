@@ -12,13 +12,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * DailyRevenue
+ * TipsRevenueRepository
  *
- * @ORM\Table(name="daily_revenue")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\DailyRevenue")
+ * @ORM\Table(name="tips_revenue")
+ * @ORM\Entity(repositoryClass="TipsRevenue")
  */
 
-class DailyRevenue
+class TipsRevenue
 {
     /**
      * @var int
@@ -32,16 +32,16 @@ class DailyRevenue
     /**
      * @var float
      *
-     * @ORM\Column(name="input_revenue", type="float", nullable=true)
+     * @ORM\Column(name="tip_amount", type="float", nullable=true)
      */
-    private $inputRevenue;
+    private $tipAmount;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="final_revenue", type="float", nullable=true)
+     * @ORM\Column(name="sum_tips", type="float", nullable=true)
      */
-    private $finalRevenue;
+    private $sumTips;
 
     /**
      * @var \DateTime
@@ -67,7 +67,7 @@ class DailyRevenue
      *
      * @param \DateTime $date
      *
-     * @return DailyRevenue
+     * @return TipsRevenue
      */
     public function setDate($date)
     {
@@ -87,50 +87,50 @@ class DailyRevenue
     }
 
     /**
-     * Set inputRevenue
+     * Set tipAmount
      *
-     * @param float $inputRevenue
+     * @param float $tipAmount
      *
-     * @return DailyRevenue
+     * @return TipsRevenue
      */
-    public function setInputRevenue($inputRevenue)
+    public function setTipAmount($tipAmount)
     {
-        $this->inputRevenue = $inputRevenue;
+        $this->tipAmount = $tipAmount;
 
         return $this;
     }
 
     /**
-     * Get inputRevenue
+     * Get tipAmount
      *
      * @return float
      */
-    public function getInputRevenue()
+    public function getTipAmount()
     {
-        return $this->inputRevenue;
+        return $this->tipAmount;
     }
 
     /**
-     * Set finalRevenue
+     * Set sumTips
      *
-     * @param float $finalRevenue
+     * @param float $sumTips
      *
-     * @return DailyRevenue
+     * @return TipsRevenue
      */
-    public function setFinalRevenue($finalRevenue)
+    public function setSumTips($sumTips)
     {
-        $this->finalRevenue = $finalRevenue;
+        $this->sumTips = $sumTips;
 
         return $this;
     }
 
     /**
-     * Get finalRevenue
+     * Get sumTips
      *
      * @return float
      */
-    public function getFinalRevenue()
+    public function getSumTips()
     {
-        return $this->finalRevenue;
+        return $this->sumTips;
     }
 }

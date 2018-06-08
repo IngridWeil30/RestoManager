@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Bidding;
-use AppBundle\Entity\DailyRevenue;
+use AppBundle\Entity\TipsRevenue;
 use AppBundle\Entity\Dish;
 use AppBundle\Entity\Recipe;
 use Doctrine\Common\Util\Debug;
@@ -88,14 +88,14 @@ class DishController extends Controller
     {
         $deleteForm = $this->createDeleteForm($dish);
 
-        $dailyRevenue = new DailyRevenue();
+        $tipsRevenue = new TipsRevenue();
         //$dailyRevenue->setInputRevenue($input_revenue);
-        $dailyRevenue_form = $this->createForm('AppBundle\Form\DailyRevenueType', $dailyRevenue);
-        $dailyRevenue_form->handleRequest($request);
+        $tipsRevenue_form = $this->createForm('AppBundle\Form\TipsRevenueType', $tipsRevenue);
+        $tipsRevenue_form->handleRequest($request);
 
-        if ($dailyRevenue_form->isSubmitted() && $dailyRevenue_form->isValid()) {
+        if ($tipsRevenue_form->isSubmitted() && $tipsRevenue_form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($dailyRevenue);
+            $em->persist($tipsRevenue);
             $em->flush();
         }
 
@@ -103,7 +103,7 @@ class DishController extends Controller
             'dish' => $dish,
             'delete_form' => $deleteForm->createView(),
             //'input_revenue' => $input_revenue->createView(),
-            'dailyRevenue_form' => $dailyRevenue_form->createView(),
+            'tipsRevenue_form' => $tipsRevenue_form->createView(),
         ));
     }
 

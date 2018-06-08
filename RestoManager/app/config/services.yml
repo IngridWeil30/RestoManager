@@ -29,7 +29,7 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
-    AppBundle\EventListener\DailyRevenue:
+    AppBundle\EventListener\TipsRevenue:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
 

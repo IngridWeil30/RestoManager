@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DailyRevenueType extends AbstractType
+class TipsRevenueType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('inputRevenue');
+        $builder->add('tipAmount');
     }
     /**
      * {@inheritdoc}
@@ -21,7 +21,7 @@ class DailyRevenueType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\DailyRevenue',
+            'data_class' => 'AppBundle\Entity\TipsRevenue',
             'csrf_protection' => "false",
             'allow_extra_fields' => true
         ));
@@ -32,7 +32,7 @@ class DailyRevenueType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_dailyrevenue';
+        return 'appbundle_tipsrevenue';
     }
 
 
