@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/RestoManager/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/sensio/framework-extra-bundle" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/sensio/distribution-bundle" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/sensio/generator-bundle" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/polyfill-apcu" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/polyfill-intl-icu" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/symfony" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/doctrine-cache-bundle" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/composer" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/annotations" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/jdorn/sql-formatter" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/incenteev/composer-parameter-handler" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/sensiolabs/security-checker" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/twig/extensions" />
+      <path value="$PROJECT_DIR$/RestoManager/vendor/symfony/property-access" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
+</project>
