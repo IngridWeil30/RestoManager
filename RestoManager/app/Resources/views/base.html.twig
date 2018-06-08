@@ -7,30 +7,30 @@
 
     {% block stylesheets %}
         <!--===============================================================================================-->
-        <link rel="icon" type="image/png" href="{{asset('images/icons/favicon.png')}}">
+        <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('fonts/themify/themify-icons.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/themify/themify-icons.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animate/animate.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/select2/select2.min.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('vendor/slick/slick.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/slick/slick.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('vendor/lightbox2/css/lightbox.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/lightbox2/css/lightbox.min.css') }}">
         <!--===============================================================================================-->
-        <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
-        <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
         <!--===============================================================================================-->
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
@@ -60,37 +60,37 @@
                     <nav class="menu">
                         <ul class="main_menu">
                             {% if is_granted("ROLE_MANAGER") %}
-                            <li>
-                            <a href="/dish">Dishes</a>
-                            </li>
+                                <li>
+                                    <a href="/dish">Dishes</a>
+                                </li>
 
-                            <li>
-                            <a href="/ingredient">Ingredient</a>
-                            </li>
-                            <li>
-                                <a href="/user">Employees</a>
-                            </li>
+                                <li>
+                                    <a href="/ingredient">Ingredient</a>
+                                </li>
+                                <li>
+                                    <a href="/user">Employees</a>
+                                </li>
                             {% else %}
-                            <li>
-                                <a href="/waiter/takingorder">Orders</a>
-                            </li>
-                            <li>
-                                <a href="/register">Register</a>
-                            </li>
-                           {% endif %}
+                                <li>
+                                    <a href="/waiter/dailyrevenue">Orders</a>
+                                </li>
+                            {% endif %}
 
-                            <li>
-                                <p>Technical support +33 645122986
-                            </li>
+                            {% if app.user %}
+                                <li class="nav-link-logged">
+                                Welcome {{ app.user.username }}
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            {% else %}
+                                <li>
+                                    <a href="/register">Register</a>
+                                </li>
 
-                            <li class="nav-link-logged">{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    Welcome {{ app.user.username }}
-                                    <a href="{{ path('fos_user_security_logout') }}">
-                                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                    </a>
-                                    {#{% else %}#}
-                                    {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
-                                {% endif %}
+                                <li>
+                                    <p>Technical support +33 645122986
+                                </li>
+                            {% endif %}
                         </ul>
                     </nav>
                 </div>
@@ -108,20 +108,20 @@
 
                 <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                     {% block body %}
-						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
-                              data-appear="fadeInDown">
+                    <span class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
+                          data-appear="fadeInDown">
 							Welcome to
 						</span>
-                        <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
-                            RestoManager
-                        </h2>
+                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
+                        RestoManager
+                    </h2>
 
-                        <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
-                            <!-- Button1 -->
-                            <a href="/login" class="btn1 flex-c-m size1 txt3 trans-0-4">
-                                Login
-                            </a>
-                        </div>
+                    <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
+                        <!-- Button1 -->
+                        <a href="/login" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                            Login
+                        </a>
+                    </div>
                 </div>
                 {% endblock %}
             </div>
@@ -154,32 +154,32 @@
 </body>
 
 
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
-    <script type="text/javascript" src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{asset('vendor/select2/select2.min.js')}}"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{asset('vendor/slick/slick.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/slick-custom.js')}}"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{asset('vendor/parallax100/parallax100.js')}}"></script>
-    <script type="text/javascript">
-        $('.parallax100').parallax100();
-    </script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="{{asset('vendor/lightbox2/js/lightbox.min.js')}}"></script>
-    <!--===============================================================================================-->
-    <script src="{{asset('js/main.js')}}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset('vendor/animsition/js/animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/popper.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset('vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset('vendor/daterangepicker/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset('vendor/slick/slick.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/slick-custom.js') }}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset('vendor/parallax100/parallax100.js') }}"></script>
+<script type="text/javascript">
+    $('.parallax100').parallax100();
+</script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset('vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="{{ asset('vendor/lightbox2/js/lightbox.min.js') }}"></script>
+<!--===============================================================================================-->
+<script src="{{ asset('js/main.js') }}"></script>
 {% block javascripts %}
 {% endblock %}
 </body>

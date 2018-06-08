@@ -2,12 +2,16 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Bidding;
+use AppBundle\Entity\DailyRevenue;
 use AppBundle\Entity\Dish;
 use AppBundle\Entity\Recipe;
 use Doctrine\Common\Util\Debug;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 /**
  * Dish controller.
@@ -27,11 +31,18 @@ class DishController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $dishes = $em->getRepository('AppBundle:Dish')->findAll();
-        $ingredient = $em->getRepository('AppBundle:Recipe')->findAll();
+        //$ingredient = $em->getRepository('AppBundle:Recipe')->findAll();
+
+
+        $form = $this->createFormBuilder();
+//        foreach ($ingredient as $ing) {
+//            $form->add($ing->getId(), NumberType::class);
+//        }
 
         return $this->render('dish/index.html.twig', array(
             'dishes' => $dishes,
-            'ingredient' => $ingredient,
+//            'ingredient' => $ingredient,
+            'form' => $form->getForm()->createView()
         ));
     }
 
@@ -44,7 +55,7 @@ class DishController extends Controller
     public function newAction(Request $request)
     {
         $dish = new Dish();
-        $recipe1=new Recipe();
+        $recipe1 = new Recipe();
         $recipe1->setDish($dish);
         $form = $this->createForm('AppBundle\Form\DishType', $dish);
         $form->handleRequest($request);
@@ -57,8 +68,12 @@ class DishController extends Controller
             return $this->redirectToRoute('dish_show', array('id' => $dish->getId()));
         }
 
+        $em = $this->getDoctrine()->getManager();
+
+        $ingredients = $em->getRepository('AppBundle:Ingredient')->findAll();
         return $this->render('dish/new.html.twig', array(
             'dish' => $dish,
+            'ingredients' => $ingredients,
             'form' => $form->createView(),
         ));
     }
@@ -69,15 +84,29 @@ class DishController extends Controller
      * @Route("/{id}", name="dish_show")
      * @Method("GET")
      */
-    public function showAction(Dish $dish)
+    public function showAction(Request $request, Dish $dish)
     {
         $deleteForm = $this->createDeleteForm($dish);
+
+        $dailyRevenue = new DailyRevenue();
+        //$dailyRevenue->setInputRevenue($input_revenue);
+        $dailyRevenue_form = $this->createForm('AppBundle\Form\DailyRevenueType', $dailyRevenue);
+        $dailyRevenue_form->handleRequest($request);
+
+        if ($dailyRevenue_form->isSubmitted() && $dailyRevenue_form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($dailyRevenue);
+            $em->flush();
+        }
 
         return $this->render('dish/show.html.twig', array(
             'dish' => $dish,
             'delete_form' => $deleteForm->createView(),
+            //'input_revenue' => $input_revenue->createView(),
+            'dailyRevenue_form' => $dailyRevenue_form->createView(),
         ));
     }
+
 
     /**
      * Displays a form to edit an existing dish entity.
@@ -136,7 +165,6 @@ class DishController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('dish_delete', array('id' => $dish->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

@@ -17,18 +17,25 @@
             <td>{{ ingredient.denomination }}</td>
         </tr>
         <tr>
-            <th>Recipes using this ingredient</th>
-            <td>
-                <ul>{% for recipe in ingredient.recipes %}
-                        recipe_id: {{ recipe.id }}
-                    {% endfor %}
-                    {#{% for dish in recipe.dish %}#}
-                        {#<li><a href="{{ path('dish_show') }}">{{ dish.id }} / {{ dish.title }}</li>#}
-                        {#<p>hello1</p>#}
-                    {#{% endfor %}#}
-                </ul>
-            </td>
+            <th>Price</th>
+            <td>{{ ingredient.price }}</td>
         </tr>
+        <tr>
+            <th>Quantity</th>
+            <td>{{ ingredient.quantity }}</td>
+        </tr>
+        {#<tr>#}
+            {#<th>Recipes using this ingredient</th>#}
+            {#<td>#}
+                {#<ul>{% for recipe in ingredient.recipes %}#}
+                        {#recipe_id: {{ recipe.id }}#}
+                        {#{% for dish in recipe.dish %}#}
+                            {#<li><a href="{{ path('dish_show') }}">{{ dish.id }} / {{ dish.title }}</li>#}
+                        {#{% endfor %}#}
+                    {#{% endfor %}#}
+                {#</ul>#}
+            {#</td>#}
+        {#</tr>#}
         </tbody>
     </table>
 

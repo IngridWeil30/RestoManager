@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Recipe
  *
- * @ORM\Table(name="recipe")
+ * @ORM\Table(name="recipes")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RecipeRepository")
  */
 class Recipe
@@ -32,16 +32,15 @@ class Recipe
     /**
      * @var Dish
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Dish", inversedBy="recipes")
+     * @ORM\JoinColumn(name="dish_id", referencedColumnName="id")
      */
-
     private $dish;
 
     /**
-     * @var Ingredient
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingredient", inversedBy="recipes")
+     * @var ArrayCollection
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Ingredient", mappedBy="recipes")
      */
-
-    private $ingredient;
+    private $ingredients;
 
 
     /**
@@ -103,26 +102,44 @@ class Recipe
     }
 
     /**
-     * Set ingredient
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ingredients = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add ingredient
      *
      * @param \AppBundle\Entity\Ingredient $ingredient
      *
      * @return Recipe
      */
-    public function setIngredient(\AppBundle\Entity\Ingredient $ingredient = null)
+    public function addIngredient(\AppBundle\Entity\Ingredient $ingredient)
     {
-        $this->ingredient = $ingredient;
+        $this->ingredients[] = $ingredient;
 
         return $this;
     }
 
     /**
-     * Get ingredient
+     * Remove ingredient
      *
-     * @return \AppBundle\Entity\Ingredient
+     * @param \AppBundle\Entity\Ingredient $ingredient
      */
-    public function getIngredient()
+    public function removeIngredient(\AppBundle\Entity\Ingredient $ingredient)
     {
-        return $this->ingredient;
+        $this->ingredients->removeElement($ingredient);
+    }
+
+    /**
+     * Get ingredients
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
     }
 }

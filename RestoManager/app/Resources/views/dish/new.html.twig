@@ -5,11 +5,22 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-    <div class="new-recipe">
-        <p>ingredient(s) :</p>
-        <input class="recipes" type="text" name="recipe"/></br>
+    {#<div class="new-recipe">#}
+    {#<p>ingredient(s) :</p>#}
+    {#<input class="recipes" type="text" name="recipe"/></br>#}
+    {#</div>#}
+    {#<button class="add-new-recipe">add</button>#}
+
+    <div style="overflow:hidden">
+        <div style='padding-left:1em; height:100px; max-width: 215px; border:2px solid #ccc; overflow-y: scroll; '>
+                {% for ingredient in ingredients %}
+                <label>
+                    <input type='checkbox' value='{{ ingredient }}'>{{ ingredient }}
+                </label>
+                    <br/>
+                {% endfor %}
+        </div>
     </div>
-    <button class="add-new-recipe">add</button>
 
     <input type="submit" value="Create" />
     {{ form_end(form) }}
@@ -20,21 +31,17 @@
         </li>
     </ul>
 
+{#<script>#}
+    {#$( document ).ready(function() {#}
+        {#var count = 1;#}
+        {#$('.add-new-recipe').click(function(e) {#}
+            {#e.preventDefault();#}
 
-{% endblock %}
+            {#$('div.new-recipe').append("</br><input class='recipes' type='text' name='recipe" + count++ + "'/></br>");#}
+        {#})#}
+    {#});#}
+{#</script>#}
+    {#</br>#}
 
-{% block javascripts %}
-
-<script>
-    $( document ).ready(function() {
-        var count = 1;
-        $('.add-new-recipe').click(function(e) {
-            e.preventDefault();
-
-            $('div.new-recipe').append("</br><input class='recipes' type='text' name='recipe" + count++ + "'/></br>");
-        })
-    });
-</script>
-    </br>
 
 {% endblock  %}

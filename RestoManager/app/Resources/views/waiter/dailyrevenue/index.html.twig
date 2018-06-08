@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h2>WAITER ACTIONS</h2>
+
+    <p>{{ 'now' | localizeddate('full', 'none') }}</p>
+
+    <h3>Taking an order</h3>
+    {% for dish in dishes %}
+        <ul>
+            <li>{{ dish.title }} / ${{ dish.price }}
+                <label for="Dish">| Quantity :</label>
+                <input type="number" value="0" min="1" max="100"></li>
+        </ul>
+    {% endfor %}
+
+    <button id="_submit">Submit</button>
+
+    <tr>
+        <th>Daily revenue</th>
+        {{ form_start(dailyRevenue_form) }}
+        {{ form_widget(dailyRevenue_form) }}
+        <input type="submit" value="Submit a daily revenue" />
+        {{ form_end(dailyRevenue_form) }}
+    </tr>
+    {#<tr>#}
+        {#<th>Starting price</th>#}
+        {#<td>${{ product.price }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+        {#<th>Minimum bid</th>#}
+        {#<td>{{ product.minimumBid }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+        {#<th>Date end bid</th>#}
+        {#<td>{{ product.dateEndBid|date("d/m/Y H:i:s") }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+        {#<th>Description</th>#}
+        {#<td>{{ product.description }}</td>#}
+    {#</tr>#}
+    {#<tr>#}
+        {#<th>User owner</th>#}
+        {#<td>{{ product.userowner }}</td>#}
+    {#</tr>#}
+
+    </br><p>Daily revenues : {{ inputRevenue }}</p>
+{% endblock %}

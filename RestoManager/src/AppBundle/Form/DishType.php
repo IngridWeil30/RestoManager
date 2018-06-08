@@ -21,6 +21,7 @@ class DishType extends AbstractType
         $builder->add('title')
             ->add('description')
             ->add('price')
+            ->add('urlimage')
             ->add('recipes',CollectionType::class, array(
                 'entry_type' => RecipeType::class,
                 'entry_options' => array('label' => false),

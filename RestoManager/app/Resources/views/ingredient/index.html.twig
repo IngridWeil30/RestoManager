@@ -5,19 +5,26 @@
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Denomination</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Denomination</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for ingredient in ingredients %}
             <tr>
-                <td><a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.id }}</a></td>
+                <td>
+                    <a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.id }}</a></td>
                 <td>{{ ingredient.denomination }}</td>
                 <td>${{ ingredient.price }}</td>
+
+                <td>{{ ingredient.quantity }} units
+                {% if ingredient.quantity < 10 %}
+                <p style="background-color: red">Inventory low</p></td>
+                {% endif %}
                 <td>
                     <ul>
                         <li>

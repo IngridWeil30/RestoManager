@@ -37,12 +37,17 @@ class Ingredient
     private $price;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="quantity", type="float")
+     */
+    private $quantity;
+
+    /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Recipe", mappedBy="ingredient")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Recipe", inversedBy="ingredient")
      */
     private $recipes;
-
 
     /**
      * @var string
@@ -50,6 +55,15 @@ class Ingredient
      * @ORM\Column(name="urlimage", type="text", nullable=true)
      */
     private $urlimage;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->dishes = new ArrayCollection();
+        $this->recipes = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -83,50 +97,6 @@ class Ingredient
     public function getDenomination()
     {
         return $this->denomination;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->dishes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add dish
-     *
-     * @param \AppBundle\Entity\Dish $dish
-     *
-     * @return Ingredient
-     */
-    public function addDish(\AppBundle\Entity\Dish $dish)
-    {
-        $dish->addIngredient($this);
-        $this->dishes[] = $dish;
-
-        return $this;
-    }
-
-    /**
-     * Remove dish
-     *
-     * @param \AppBundle\Entity\Dish $dish
-     */
-    public function removeDish(\AppBundle\Entity\Dish $dish)
-    {
-        $dish->removeIngredient($this);
-        $this->dishes->removeElement($dish);
-    }
-
-    /**
-     * Get dishes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getDishes()
-    {
-        return $this->dishes;
     }
 
     /**

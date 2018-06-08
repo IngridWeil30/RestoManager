@@ -1,0 +1,90 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ingridweil
+ * Date: 6/7/18
+ * Time: 6:02 PM
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Takingorder
+ *
+ * @ORM\Table(name="takingorder")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Takingorder")
+ */
+
+class Takingorder
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="input_revenue", type="float", nullable=true)
+     */
+    private $input_revenue;
+
+//    /**
+//     * @var Product
+//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Product", inversedBy="bidding", cascade={"persist", "remove"})
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//
+//    protected $products;
+//
+//    /**
+//     * @var User
+//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="bidding", cascade={"persist", "remove"})
+//     * @ORM\JoinColumn(nullable=false)
+//     */
+//
+//    protected $userBidder;
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Set inputRevenue
+     *
+     * @param float $inputRevenue
+     *
+     * @return Takingorder
+     */
+    public function setInputRevenue($inputRevenue)
+    {
+        $this->input_revenue = $inputRevenue;
+
+        return $this;
+    }
+
+    /**
+     * Get inputRevenue
+     *
+     * @return float
+     */
+    public function getInputRevenue()
+    {
+        return $this->input_revenue;
+    }
+}

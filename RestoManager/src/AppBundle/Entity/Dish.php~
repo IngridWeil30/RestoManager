@@ -47,7 +47,6 @@ class Dish
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Recipe", mappedBy="dish", cascade={"all"})
-     * @ORM\JoinColumn(nullable=true)
      */
     private $recipes;
 
@@ -66,20 +65,10 @@ class Dish
     {
         $ingredients = new ArrayCollection();
         foreach ($this->getRecipes() as $recipe) {
-            $ingredients->add($recipe->getIngredient());
+            $ingredients->add($recipe->getIngredients());
         }
         return $ingredients;
     }
-
-//    /**
-//     * @var Ingredient
-//     */
-//    public function setIngredients($ingredient)
-//    {
-//        $recipe = new Recipe();
-//        $recipe->setIngredient($ingredient);
-//        $this->addRecipe($recipe);
-//    }
 
     /**
      * @return Collection

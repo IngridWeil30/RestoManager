@@ -10,11 +10,12 @@
             <th>Title</th>
             <th>Description</th>
             <th>Price</th>
-            <th>Ingredients included</th>
+            {#<th>Ingredients included</th>#}
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
+        {{ form_start(form) }}
         {% for dish in dishes %}
             <tr>
                 <td><a href="{{ path('dish_show', { 'id': dish.id }) }}">{{ dish.id }}</a></td>
@@ -22,15 +23,17 @@
                 <td>{{ dish.description }}</td>
                 <td>${{ dish.price }}</td>
                 <td>
-                    <ul>
-                        {% for recipe in dish.recipes %}
-                            {% for ingredient in recipe.ingredient %}
-                                <li>
-                                    <a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.denomination }}</a>
-                                </li>
-                            {% endfor %}
-                        {% endfor %}
-                    </ul>
+                    {#<ul>#}
+                        {#{% for recipe in dish.recipes %}#}
+                            {#{% for ingredient in recipe.ingredients %}#}
+                                {#<li>#}
+                                    {#<a href="{{ path('ingredient_show', { 'id': ingredient.id }) }}">{{ ingredient.denomination }}</a>#}
+                                {#</li>#}
+                                {#<li>{{ form_widget(attribute(form, ingredient.id)) }}</li>#}
+                            {#{% endfor %}#}
+                        {#{% endfor %}#}
+                    {#</ul>#}
+                </td>
                 <td>
                     <button class="button"><a href="{{ path('dish_show', { 'id': dish.id }) }}">show</a></button>
                     </br>
@@ -38,6 +41,7 @@
                 </td>
             </tr>
         {% endfor %}
+        {{ form_end(form) }}
         </tbody>
     </table>
 
